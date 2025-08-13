@@ -1,12 +1,42 @@
-# React + Vite
+# ממשק ציור משולש וחישוב זוויות
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. באיזו שיטה השתמשתי לציור המשולש? למה בחרתי בה?
 
-Currently, two official plugins are available:
+לציור המשולש השתמשתי ב־**SVG** עם אלמנט `<polyline>` לחיבור בין שלוש הנקודות שהוזנו על ידי המשתמש.  
+בחרתי בשיטה זו מכיוון שהיא מאפשרת שליטה מדויקת על מיקום, צבע, ועובי הקווים, ובנוסף קל לשלב בה נקודות סימון וקשתות לסימון זוויות.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 2. כיצד חישבתי את ערך הזוויות?
 
-## Expanding the ESLint configuration
+החישוב התבסס על **חוק הקוסינוסים**:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. חישוב אורכי הצלעות באמצעות נוסחת המרחק בין שתי נקודות.
+2. שימוש בנוסחה:
+3. המרת הזווית ממעלות רדיאנים למעלות ע"י הכפלה ב־180/π.
+
+## 3. מה היה מאתגר בתרגיל?
+
+החלק המאתגר היה שילוב בין יצירת ממשק קלט פשוט וברור לבין הצגה גרפית ב־SVG בצורה מדויקת.  
+בנוסף, היה צורך לתכנן את מעבר הנתונים בין המסכים כך שיישמרו גם במקרה של ניווט או חזרה אחורה.
+
+## 4. האם השתמשתי בעזרים חיצוניים (כולל AI)? אם כן, במה הוא עזר?
+
+כן.  
+נעזרתי ב־AI לקבלת רעיונות למבנה הכללי של הפתרון, לדוגמאות קוד בסיסיות, ובעיקר להסבר ושימוש ב־**SVG** לציור המשולש, מאחר ואת התחום הזה לא הכרתי לפני כן.  
+את שאר המימוש והתאמת הקוד לדרישות המשימה ביצעתי ידנית.
+
+## 5. הסבר קצר על השימוש ב־SVG
+
+בפרויקט נעשה שימוש ב־`<svg>` כקנבס גרפי בגודל 500×500 פיקסלים.  
+בתוכו:
+
+- `<polyline>` משמש לציור קווי המשולש, ע"י חיבור בין הנקודות A, B ו־C.
+- `<circle>` מסמן את קודקודי המשולש ברדיוס קטן כדי להמחיש את המיקומים.
+- בעתיד ניתן להוסיף `<path>` עם פקודת arc ליצירת קווים מעוגלים לציון הזוויות.
+
+## 6. טכנולוגיות שבהן השתמשתי
+
+- **React** – בניית רכיבי הממשק וניהול הזרימה בין המסכים.
+- **React Router DOM** – ניווט בין עמוד הקלט לעמוד התצוגה והעברת הנתונים.
+- **JavaScript (ES6)** – לוגיקה כללית, חישובי מתמטיקה, חישוב הזוויות.
+- **Bootstrap** – עיצוב בסיסי ופריסת טפסים רספונסיבית.
+- **SVG** – ציור ויזואלי של המשולש והנקודות.
