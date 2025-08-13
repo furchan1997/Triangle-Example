@@ -8,7 +8,7 @@ function App() {
   return (
     // עטיפה כללית לאפליקציה. כאן הוספת מחלקות Bootstrap לפריסה מלאה אנכית.
     // הערה: ודא שב-index/main הוספת <BrowserRouter> מסביב ל-<App/>, אחרת ה-Routes לא יעבדו.
-    <div className="app min-vh-100 d-flex flex-column">
+    <div className="app min-vh-100 d-flex flex-column rtl">
       {/* הגדרת הראוטים הראשיים של האפליקציה */}
       <Routes>
         {/* דף הבית – ניווט ראשוני/הסבר וכפתור להתחלת יצירת משולש */}
